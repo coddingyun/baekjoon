@@ -1,0 +1,37 @@
+#include <iostream>
+#include <list>
+#include <string>
+
+int main(){
+    using namespace std;
+    int number;
+    cin >> number;
+    double *arrays_a =new double[number];
+    int N;
+    for ( int i=0; i<number; i++){
+        cin >> N;
+        int *arrays=new int[N];
+        for (int j=0; j<N; j++){
+            cin >> arrays[j];
+        }
+        double result=0;
+        for(int j=0; j<N; j++){
+            result+=arrays[j];
+        }
+        result/=N;
+        int student=0;
+        for(int j=0; j<N; j++){
+            if(result < arrays[j]){
+                student+=1;
+            }
+        }
+        arrays_a[i]=(double)student/N *100;
+        delete [] arrays;
+    }
+    for (int i=0; i<number; i++){
+        cout<<fixed;
+        cout.precision(3);
+        cout << arrays_a[i]<<"%"<< endl;
+    }
+    delete [] arrays_a;
+}
