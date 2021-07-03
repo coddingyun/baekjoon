@@ -1,0 +1,27 @@
+#include <iostream>
+
+bool hansu(int i){
+    if (i<100) return true;
+    else if (i==1000) return false;
+    else{
+        int a = i%10; // 일의 자리수
+        i/=10;
+        int b = i%10;
+        i/=10;
+        int c = i%10;
+        if ((b-a)==(c-b)||(a-b)==(b-c)) return true;
+        else return false;
+    }
+    return 0;
+}
+
+int main(){
+    using namespace std;
+    int N;
+    cin >> N;
+    int sum=0;
+    for (int i=1; i<=N; i++){
+        if (hansu(i)) sum+=1;
+    }
+    cout << sum << endl;
+}
