@@ -1,0 +1,38 @@
+#include <iostream>
+#include <list>
+#include <string>
+
+int calculator(std::string a, int numbers){
+    int *b=new int[numbers];
+    for(int i=0; i<numbers; i++){
+        if (a[i]=='O'){
+            if (i==0) b[i]=1;
+            else if (b[i-1]>=1) b[i]=b[i-1]+1;
+            else if(b[i-1]==0) b[i]=1;
+        }
+        else{
+            b[i]=0;
+        }
+    }
+    double result=0;
+    for(int i=0; i<numbers; i++){
+        result+=b[i];
+    }
+    delete [] b;
+    return result;
+}
+
+int main(){
+    using namespace std;
+    int number;
+    cin >> number;
+    string *arrays_a =new string[number];
+    
+    for ( int i=0; i<number; i++){
+        cin >> arrays_a[i];
+    }
+    for ( int i=0; i<number; i++){
+        cout << calculator(arrays_a[i],arrays_a[i].size()) << endl;
+    }
+    delete [] arrays_a;
+}
