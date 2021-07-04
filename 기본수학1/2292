@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main(){
+    using namespace std;
+    long long A;
+    cin >> A;
+    long long total = 1;
+    if(A==1) {
+        cout << "1" << endl;
+        return 0;
+    }
+    for (int i=1; i<1000000; i++){
+        total += 6*i;
+        if (A<=total) {
+            cout << i+1 << endl;
+            break;
+        }
+    }
+}
