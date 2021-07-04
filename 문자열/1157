@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string.h>
+#include <algorithm>
+
+int main(){
+    using namespace std;
+    string S;
+    cin >> S;
+    int arrays[26];
+    for (int i=0; i<26; i++){
+        arrays[i]=0;
+    }
+    for (size_t i=0; i<S.size(); i++){
+        S[i]=toupper(S[i]);
+        int idx=(int) S[i] -65;
+        arrays[idx]++;
+    }
+    int best=0;
+    int rdx=0;
+    for (int i=0; i<26; i++){
+        if (best < arrays[i]){
+            best=arrays[i];
+            rdx=i;
+        }
+    }
+    for (int j=0; j<26; j++){
+        for (int i=j+1; i<26; i++){
+            if (arrays[j]==best && arrays[i]==best){
+                cout << "?" << endl;
+                return 0;
+            }
+        } 
+    }
+        
+    cout << char(rdx+65) << endl;
+
+}
