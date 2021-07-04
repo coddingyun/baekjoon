@@ -1,0 +1,21 @@
+#include <iostream>
+
+int main(){
+    using namespace std;
+    long long A;
+    cin >> A;
+    long long total = 0;
+    for (int i=1; i<1000000; i++){
+        total += i;
+        if (A<=total) {
+            if(i%2==1){
+                cout << (i+1)-(A-(total-i)) << "/" << A-(total-i) << endl;
+                break;
+            }
+            else{
+                cout << A-(total-i) << "/" << (i+1)-(A-(total-i)) << endl;
+                break;
+            }
+        }
+    }
+}
