@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main(){
+    using namespace std;
+    int N;
+    cin >> N;
+    int fivenumber =  N/5;
+    while(fivenumber>0){
+        if ((N-(5*fivenumber))%3==0) break;
+        else fivenumber--;
+    }
+    if (fivenumber==0){
+        if ((N-(5*fivenumber))%3==0) cout << (N-(5*fivenumber))/3 << endl;
+        else cout << -1 << endl;
+    }
+    else{
+        cout << fivenumber+(N-(5*fivenumber))/3 << endl;
+    }    
+}
