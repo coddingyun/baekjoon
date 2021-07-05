@@ -1,0 +1,35 @@
+#include <iostream>
+
+int arrays[10000];
+
+bool sosu(int i){
+    if (i==1) return false;
+    for (int j=2; j<i; j++){
+        if (i%j==0) {  
+            return false;
+        }       
+    }
+    return true;
+    
+}
+int main(){
+    using namespace std;
+    int M,N;
+    cin >> M >> N;
+    int number=0;
+    for (int i=M; i<=N; i++){
+        if (sosu(i)){
+            arrays[number]=i;
+            number++;
+        }
+    }
+    int result=0;
+    for (int i=0; i<number; i++){
+        result+=arrays[i];
+    }
+    if (number==0) cout << -1 << endl;
+    else{
+        cout << result << endl;
+        cout << arrays[0] << endl; 
+    }
+}
