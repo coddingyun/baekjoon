@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+bool arrays[250000];
+int main(){
+    using namespace std;
+    int T;
+    int arrayss[10000];
+    int numbers=0;
+    while(cin >> T && T!=0){
+        int number=0;
+        arrays[1]=true;
+        for (int i=2; i<sqrt(T+T); i++){
+            for (int j=i+i; j<(T+T); j+=i){
+                arrays[j]=true;
+            }
+        }
+        for (int i=T+1; i<(T+T); i++){
+            if (arrays[i]==false) number++;
+        }
+        arrayss[numbers]=number;
+        numbers++;
+    }
+    for (int i=0; i<numbers; i++){
+        if (arrayss[i]==0) cout << 1 << endl;
+        else    cout << arrayss[i] << endl;
+    }
+}
