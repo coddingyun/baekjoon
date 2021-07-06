@@ -1,0 +1,24 @@
+#include <iostream>
+
+int main(){
+    using namespace std;
+    int A,B;
+    cin >> A >>B;
+    int *arrays=new int[A];
+    for (int i=0; i<A; i++){
+        int card;
+        cin >> card;
+        arrays[i]=card;
+    }
+    int biggest=0;
+    for (int i=0; i<A; i++){
+        for (int j=i+1; j<A; j++){
+            for (int k=j+1; k<A; k++){
+                int sum = arrays[i]+arrays[j]+arrays[k];
+                if (sum<=B && biggest < sum) biggest =sum;
+            }
+        }
+    }
+    cout <<biggest << endl;
+    delete [] arrays;
+}
