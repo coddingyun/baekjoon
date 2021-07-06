@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+bool arrays[30001];
+int main(){
+    using namespace std;
+    int A,B,C;
+    int number=0;
+    while(cin>>A>>B>>C &&!(A==0&&B==0&&C==0)){
+        if (A*A+B*B==C*C || A*A+C*C==B*B || B*B+C*C==A*A){
+            arrays[number]=true;
+            number++;
+        }
+        else{
+            arrays[number]=false;
+            number++;
+        }
+    }
+    for (int i=0; i<number; i++){
+        if (arrays[i]){
+            cout << "right" << endl;
+        }
+        else{
+            cout << "wrong" << endl;
+        }
+    }
+}
