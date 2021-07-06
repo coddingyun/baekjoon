@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+bool arrays[10001];
+int main(){
+    using namespace std;
+    int T;
+    cin >> T;
+    int *testcase = new int[T];
+    for (int i=0; i<T; i++){
+        int A;
+        cin >> A;
+        testcase[i]=A;
+    }
+    arrays[1]=true;
+    for (int k=0; k<T; k++){
+        for (int i=2; i<sqrt(testcase[k]); i++){
+            for (int j=i+i; j<testcase[k]; j+=i){
+                arrays[j]=true;
+            }
+        }
+        for (int i=testcase[k]/2; i>=2; i--){
+            if (arrays[i]==false && arrays[testcase[k]-i]==false){
+                cout << i << " " << testcase[k]-i << endl;
+                break;
+            } 
+        }
+    }
+    delete [] testcase;
+}
