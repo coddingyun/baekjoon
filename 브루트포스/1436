@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+
+int main(){
+    using namespace std;
+    
+    int N;
+    cin >> N;
+    int *arrays= new int[N];
+    int idx=0;
+    for (int i=666; i<100000000; i++){
+        string a=to_string(i);
+        for (size_t j=1; j<a.size()-1; j++){
+            if (a[j-1]=='6'&&a[j]=='6'&&a[j+1]=='6'){
+                arrays[idx]=i;
+                idx++;
+                break;
+            }
+        }
+        if (idx==N) break;
+    }
+    cout << arrays[N-1] << endl;
+
+    delete [] arrays;
+}
