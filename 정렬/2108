@@ -1,0 +1,49 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+
+int arr[500001];
+int arr2[8001];
+int main(){
+    using namespace std;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int N;
+    cin >> N;
+    double result=0;
+    for (int i=0; i<N; i++){
+        int A;
+        cin >> A;
+        result+=A;
+        arr[i]=A;
+        arr2[A+4000]++;
+    }
+    int max=0;
+    int most;
+    for (int i=0; i<8001; i++){
+        if(max<arr2[i]) {
+            max=arr2[i];
+        }
+    }
+
+    for (int i=0; i<8001; i++){
+        if(max==arr2[i]) {
+            most=i-4000;
+            for (int j=i+1; j<8001; j++){
+                if (max==arr2[j]) {
+                    most=j-4000;
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    sort(arr,arr+N);
+    
+    cout << round(result/(double)N) << '\n';
+    cout << arr[N/2] << '\n';
+
+    cout << most << '\n';
+    cout <<arr[N-1]-arr[0] <<'\n';
+}
