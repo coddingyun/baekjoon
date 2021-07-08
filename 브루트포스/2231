@@ -1,0 +1,24 @@
+#include <iostream>
+
+int main(){
+    using namespace std;
+    int A;
+    cin >> A;
+    int result;
+    int number;
+    for (int i=1; i<A; i++){
+        result=i;
+        int part=i;
+        while(1){
+            result += part%10;
+            if (part/10==0) break;
+            part/=10;
+        }
+        if (result == A) {
+            number=i;
+            break;
+        }
+    }
+    if (result != A) printf("%d\n",0);
+    else printf("%d\n",number);
+}
