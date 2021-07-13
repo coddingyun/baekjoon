@@ -1,0 +1,47 @@
+#include <iostream>
+#include <stack>
+
+int main(){
+    using namespace std;
+    stack<int> stk;
+    string A;
+    int N;
+    cin >> N;
+    int *stk_array = new int[N];
+    int i=0;
+    for (int k=0; k<N; k++){
+        cin >> A;
+        if (A=="push"){
+            int num;
+            cin >> num;
+            stk.push(num);
+        }
+        else if (A=="pop"){
+            if(stk.empty()) stk_array[i]= -1;
+            else {
+                stk_array[i]=stk.top();
+                stk.pop();
+            }
+            i++;
+        }
+        else if (A=="size"){
+            stk_array[i]=stk.size();
+            i++;
+        }
+        else if (A=="empty"){
+            if (stk.empty()) stk_array[i]= 1;
+            else stk_array[i]=0;
+            i++;
+        }
+        else if (A=="top"){
+            if (stk.empty()) stk_array[i]= -1;
+            else stk_array[i]= stk.top();
+            i++;
+        }
+    }
+    for (int k=0; k<i; k++){
+        cout << stk_array[k] << endl;
+    }
+    delete [] stk_array;
+    return 0;
+}
