@@ -1,0 +1,43 @@
+#include <iostream>
+#include <algorithm>
+
+int main(){
+    using namespace std;
+    int A;
+    cin >> A;
+    int *x_array = new int[A];
+    int *y_array = new int[A];
+    for (int i=0; i<A; i++){
+        int x,y;
+        cin >> x >> y;
+        x_array[i]=x;
+        y_array[i]=y;
+    }
+    for (int i=0; i<A-1; i++){
+        if (x_array[i]>x_array[i+1]){
+            int temp = x_array[i];
+            x_array[i]=x_array[i+1];
+            x_array[i+1]=temp;
+            int temp2 = y_array[i];
+            y_array[i]=y_array[i+1];
+            y_array[i+1]=temp2;
+        }
+    }
+    for (int i=0; i<A-1; i++){
+        if (x_array[i]==x_array[i+1]){
+            if (y_array[i]>y_array[i+1]){
+                int temp = x_array[i];
+                x_array[i]=x_array[i+1];
+                x_array[i+1]=temp;
+                int temp2 = y_array[i];
+                y_array[i]=y_array[i+1];
+                y_array[i+1]=temp2;
+            }
+        }
+    }
+    for (int i=0; i<A; i++){
+        cout << x_array[i] << " " << y_array[i] << endl;
+    }
+    delete [] x_array;
+    delete [] y_array;
+}
