@@ -1,0 +1,41 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+struct position{
+    int age;
+    int pos;
+    int change;
+};
+bool compare(position A, position B){
+    return A.age < B.age;
+}
+bool comp(position A, position B){
+    return A.pos < B.pos;
+}
+
+int main(){
+    int A;
+    cin >> A;
+    vector<position> B(A);
+    for (int i=0; i<A; i++){
+        int a;
+        cin >> a;
+        B[i].age = a;
+        B[i].pos=i;
+    }
+    sort(B.begin(),B.end(),compare);
+    int number =0;
+    for (int i=0; i<A; i++){
+        if (i>0&&B[i].age==B[i-1].age) B[i].change = B[i-1].change;
+        else{
+            B[i].change=number;
+            number++;
+        }
+    }
+    sort(B.begin(),B.end(),comp);
+    for (int i=0; i<A; i++){
+        cout << B[i].change << " ";
+    }
+    cout << "\n";
+}
