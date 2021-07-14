@@ -1,0 +1,37 @@
+#include <iostream>
+#include <stack>
+
+int main(){
+    using namespace std;
+    stack<char> stk;
+    string A;
+    int N;
+    cin >> N;
+    cin.ignore();
+    string *array = new string[N];
+    for (int k=0; k<N; k++){
+        cin >> A;
+        for (size_t i=0; i<A.size(); i++){
+            if (A[i]==')'){
+                if(!stk.empty()){
+                    array[k] = "YES";
+                    stk.pop();
+                }
+                else{
+                    array[k] = "NO";
+                    break;
+                }
+                
+            }
+            else if (A[i]=='('){
+                stk.push('(');
+            }
+        }
+        if (!stk.empty()) array[k]="NO";
+        while(!stk.empty()) stk.pop();
+    }
+    for (int i=0; i<N; i++){
+        cout << array[i] << endl;
+    }
+    delete [] array;
+}
