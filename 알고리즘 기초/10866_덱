@@ -1,0 +1,84 @@
+#include <iostream>
+#include <deque>
+
+int main(){
+    using namespace std;
+    deque<int> q;
+    int num;
+    cin >> num;
+    int array[10000];
+    int k=0;
+    for (int i=0; i<num; i++){
+        string commt;
+        cin >> commt;
+        if(commt=="push_front"){
+            int a;
+            cin >> a;
+            q.push_front(a);
+        }
+        if(commt=="push_back"){
+            int a;
+            cin >> a;
+            q.push_back(a);
+        }
+        if(commt=="pop_front"){
+            if (q.empty()){
+                array[k]=-1;
+                k++;
+            }
+            else{
+                array[k]=q.front();
+                k++;
+                q.pop_front();
+            }
+        }
+        if(commt=="pop_back"){
+            if (q.empty()){
+                array[k]=-1;
+                k++;
+            }
+            else{
+                array[k]=q.back();
+                k++;
+                q.pop_back();
+            }
+        }
+        if(commt=="size"){
+            array[k]=q.size();
+            k++;
+        }
+        if(commt=="empty"){
+            if (q.empty()){
+                array[k]=1;
+                k++;
+            }
+            else{
+                array[k]=0;
+                k++;
+            }
+        }
+        if(commt=="front"){
+            if (q.empty()){
+                array[k]=-1;
+                k++;
+            }
+            else{
+                array[k]=q.front();
+                k++;
+            }
+        }
+        if(commt=="back"){
+            if (q.empty()){
+                array[k]=-1;
+                k++;
+            }
+            else{
+                array[k]=q.back();
+                k++;
+            }
+        }
+    }
+    for (int i=0; i<k; i++){
+        cout << array[i] <<"\n";
+    }
+}
