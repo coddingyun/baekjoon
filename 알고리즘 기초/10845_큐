@@ -1,0 +1,68 @@
+#include <iostream>
+#include <queue>
+
+int main(){
+    using namespace std;
+    queue<int> q;
+    int num;
+    cin >> num;
+    int array[10000];
+    int i=0;
+    while(num--){
+        string comt;
+        cin >> comt;
+        if (comt=="push"){
+            int news;
+            cin >> news;
+            q.push(news);
+        }
+        else if (comt == "pop"){
+            if (!q.empty()) {
+                array[i]=q.front();
+                i++;
+                q.pop();
+            }
+            else {
+                array[i]=-1;
+                i++;
+            }
+        }
+        else if (comt == "size"){
+            array[i]=q.size();
+            i++;
+        }
+        else if (comt == "empty"){
+            if (!q.empty()){
+                array[i]=0;
+                i++;
+            }
+            else{
+                array[i]=1;
+                i++;
+            }
+        }
+        else if (comt == "front"){
+            if (!q.empty()){
+                array[i]=q.front();
+                i++;
+            }
+            else{
+                array[i]=-1;
+                i++;
+            }
+        }
+        else if (comt == "back"){
+            if (!q.empty()){
+                array[i]=q.back();
+                i++;
+            }
+            else{
+                array[i]=-1;
+                i++;
+            }
+        }
+    }
+    for (int k=0; k<i; k++){
+        cout << array[k] << endl;
+    }
+}
