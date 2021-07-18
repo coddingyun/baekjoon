@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stack>
+#include <queue>
+#include <vector>
+
+int main(){
+    using namespace std;
+    stack<int> s;
+    int num;
+    cin >> num;
+    vector<int> array(num+1), array2(num+1), array3(1000001,0);
+    for (int i=0; i<num; i++){
+        int a;
+        cin >> a;
+        array[i]=a;
+    }
+    for (int i=0; i<num; i++){
+        array3[array[i]]++;
+    }
+    for (int i=num-1; i>=0; i--){
+        while(!s.empty()&&array3[s.top()]<=array3[array[i]]){
+            s.pop();
+        }
+        if (!s.empty()) array2[i]=s.top();
+        else array2[i]=-1;
+        s.push(array[i]);
+    }
+    for (int i=0; i<num; i++){
+        cout << array2[i] <<" ";
+    }
+    cout << "\n";
+}
