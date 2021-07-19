@@ -1,0 +1,27 @@
+#include <iostream>
+
+int main(){
+    using namespace std;
+    string input;
+    getline(cin, input);
+    for (size_t i=0; i<input.size(); i++){
+        if (input[i]==' ') cout << " ";
+        else if (input[i]>=48 && input[i]<=57) cout << input[i];
+        else{
+            if (input[i]>=65 && input[i]<=90){
+                int num = input[i]+13;
+                if (num>90){
+                    num=64+(num-90);
+                }
+                cout << (char)num;
+            }
+            else{
+                int num = input[i]+13;
+                if (num>122){
+                    num=96+(num-122);
+                }
+                cout << (char)num;
+            }
+        }
+    }
+}
