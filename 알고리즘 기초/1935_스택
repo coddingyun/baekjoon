@@ -1,0 +1,43 @@
+#include <iostream>
+#include <stack>
+
+int main(){
+    using namespace std;
+    stack<double> s;
+    int num;
+    cin >> num;
+    string eq;
+    cin >> eq;
+    for (int i=0; i<num; i++){
+        int a;
+        cin >> a;
+        for (size_t j=0; j<eq.size(); j++){
+            if(eq[j]==i+65){
+                char plus = a+'0';
+                eq[j]=plus;
+            }
+        }
+    }
+    for (size_t i=0; i<eq.size(); i++){
+        if (eq[i]!='+' && eq[i]!='-'&& eq[i]!='*'&& eq[i]!='/'){
+            s.push(eq[i]-48);
+        }
+        else{
+            double b = s.top();
+            s.pop();
+            double a = s.top();
+            s.pop();
+            switch(eq[i]){
+                case '+': s.push((a+b)); break;
+                case '-': s.push((a-b)); break;
+                case '*': s.push((a*b)); break;
+                case '/': s.push((a/b)); break;
+            }
+        }
+    }
+    double result = s.top();
+    cout << fixed;
+    cout.precision(2);
+    cout << result << '\n';
+    
+}
