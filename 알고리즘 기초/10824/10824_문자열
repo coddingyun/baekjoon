@@ -1,0 +1,11 @@
+#include <iostream>
+#include <string>
+
+int main(){
+    using namespace std;
+    string A, B, C, D;
+    cin >> A >> B >> C >> D;
+    A+=B;
+    C+=D;
+    cout << stoll(A)+stoll(C) << endl;
+}
