@@ -1,0 +1,53 @@
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <algorithm>
+#include <string.h>
+
+struct knight{
+    int x,y;
+};
+bool visit[301][301];
+int cnt[301][301];
+
+int x1, y1, x2, y2;
+int n;
+std::queue<knight> q;
+int dx[8] = { 2, 2, -2, -2, 1, -1, 1 , -1 };
+int dy[8] = { 1, -1, 1, -1, 2, 2, -2, -2 };
+
+void BFS(int x, int y){
+    q.push({x,y});
+    visit[x][y]=true;
+    cnt[x][y]++;
+    while(!q.empty()){
+        int xx = q.front().x;
+        int yy = q.front().y;
+        q.pop();
+        for (int i=0; i<8; i++){
+            int sx = xx+dx[i];
+            int sy= yy+dy[i];
+            if (sx>=0 && sy>=00 && sx<n && sy<n && visit[sx][sy]==false){
+                visit[sx][sy]=true;
+                q.push({sx, sy});
+                cnt[sx][sy]=cnt[xx][yy]+1;
+            }
+        }
+    }
+}
+int main(){
+    using namespace std;
+    int T;
+    cin >> T;
+    for (int i=0; i<T; i++){
+        cin >> n;
+        cin >>x1>>y1 >> x2>>y2;
+        BFS(x1,y1);
+        cout << cnt[x2][y2]-1 <<"\n";
+        memset(visit, 0, sizeof(visit));
+        memset(cnt, 0, sizeof(cnt));
+        while(!q.empty()){
+            q.pop();
+        }
+    }
+}
