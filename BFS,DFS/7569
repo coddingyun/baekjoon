@@ -1,0 +1,63 @@
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <algorithm>
+#include <string.h>
+
+struct tomato{
+    int height, y, x;
+};
+
+int n,m,h;
+int arr[101][101][101];
+std::queue<tomato> q;
+int dx[6] = { 1, 0, -1, 0, 0, 0 };
+int dy[6] = { 0, 1, 0 , -1, 0, 0 };
+int dz[6] = { 0, 0, 0, 0, 1, -1};
+
+void BFS(){
+    while(!q.empty()){
+        int zz=q.front().height;
+        int yy=q.front().y;
+        int xx=q.front().x;
+        q.pop();
+        for (int i=0; i<6; i++){
+            int cz=zz+dz[i];
+            int cx=xx+dx[i];
+            int cy=yy+dy[i];
+            if (0 <= cx && 0 <= cy && 0 <=cz && cx < m && cy < n&& cz<h&&arr[cz][cy][cx]==0){
+                arr[cz][cy][cx]=arr[zz][yy][xx]+1;
+                q.push({cz,cy,cx});
+            }
+        }
+
+    }
+}
+int main(){
+    using namespace std;
+    cin >> m >> n >>h;
+    for (int i=0; i<h; i++){
+        for (int j=0; j<n; j++){
+            for (int u=0; u<m; u++){
+                cin >> arr[i][j][u];
+                if (arr[i][j][u]==1) q.push({i,j,u});
+            }
+        }
+    }
+    BFS();
+    int result = 0;
+    for (int i=0; i<h; i++){
+        for (int j=0; j<n; j++){
+            for (int u=0; u<m; u++){
+                if (arr[i][j][u]==0) {
+                    cout << -1 <<"\n";
+                    return 0;
+            }
+            if (result < arr[i][j][u]){
+                result=arr[i][j][u];
+            }
+            }
+        }
+    }
+    cout << result-1 <<"\n";
+}
