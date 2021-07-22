@@ -1,0 +1,42 @@
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <algorithm>
+#include <string.h>
+
+bool visit[100001];
+int cnt[100001];
+
+int x1, x2;
+std::queue<int> q;
+int dx[2]={1,-1};
+
+void BFS(int x){
+    q.push(x);
+    visit[x]=true;
+    cnt[x]++;
+    while(!q.empty()){
+        int xx = q.front();
+        q.pop();
+        for (int i=0; i<2; i++){
+            int sx = xx+dx[i];
+            if (sx>=0 && sx<100001 && visit[sx]==false){
+                visit[sx]=true;
+                q.push(sx);
+                cnt[sx]=cnt[xx]+1;
+            }
+        }
+        int sx2=xx*2;
+        if (sx2>=0 && sx2<100001 && visit[sx2]==false){
+                visit[sx2]=true;
+                q.push(sx2);
+                cnt[sx2]=cnt[xx]+1;
+        }
+    }
+}
+int main(){
+    using namespace std;
+    cin >>x1 >> x2;
+    BFS(x1);
+    cout << cnt[x2]-1 << "\n";
+}
