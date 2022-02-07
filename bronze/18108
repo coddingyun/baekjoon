@@ -1,0 +1,9 @@
+#include <iostream>
+
+int main(){
+    using namespace std;
+    int input;
+    cin >> input;
+    int result = input -543;
+    cout << result << endl;
+}
