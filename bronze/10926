@@ -1,0 +1,9 @@
+#include <iostream>
+
+int main(){
+    using namespace std;
+    string input;
+    cin >> input;
+    string result = input + "??!";
+    cout << result << endl;
+}
