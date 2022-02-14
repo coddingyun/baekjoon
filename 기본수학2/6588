@@ -1,0 +1,36 @@
+#include <iostream>
+
+bool odd(int n) {
+    return n % 2 == 1;
+}
+
+bool sosu(int n) {
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main(){
+    using namespace std;
+    cin.tie(NULL);
+	ios_base::sync_with_stdio(false);
+    int input;
+    cin >> input;
+    bool check=false;
+    while(input!=0){
+        for (int i = 2; i <= input/2; i++) {
+            if (odd(i) && sosu(i) && sosu(input - i) && odd(input - i)) {
+                cout << input <<" = " << i << " + " << input - i << "\n";
+                check=true;
+                break;
+            }
+        }
+        if(check==false){
+            cout << "Goldbach's conjecture is wrong." << "\n";
+        }
+        cin >> input;
+    }
+}
