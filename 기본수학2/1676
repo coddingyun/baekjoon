@@ -1,0 +1,12 @@
+#include <iostream>
+
+int main(){
+  using namespace std;
+  int input;
+  cin >> input;
+  int tmp1 = input / 5;
+  int tmp2 = input / 25;
+  int tmp3 = input / 125;
+  
+  cout << tmp1 + tmp2 + tmp3 << "\n";
+}
