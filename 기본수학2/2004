@@ -1,0 +1,31 @@
+#include <iostream>
+
+long long johab(int n, int x){
+    int result = 0;
+
+    for (long long i=x; i<=n; i*=x) {
+        result += n/i;
+    }
+
+    return result;
+}
+
+int main(){
+    using namespace std;
+    cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    long long input1;
+    cin >> input1;
+    long long input2;
+    cin >> input2;
+
+    long long temp1 = johab(input1,2)-johab(input2,2)-johab(input1-input2,2);
+    long long temp2 = johab(input1,5)-johab(input2,5) - johab(input1-input2,5);
+
+    if (temp1>temp2) {
+        cout << temp2 << "\n";
+    } else {
+        cout << temp1 << "\n";
+    }
+
+}
