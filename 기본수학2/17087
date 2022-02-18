@@ -1,0 +1,30 @@
+#include <iostream>
+int gcd(int a, int b) {
+    if (a % b == 0) {
+        return b;
+    } else {
+        return gcd(b, a % b);
+    }
+}
+
+int arr[100001];
+
+int main(){
+    using namespace std;
+    int N, S;
+    cin >> N >> S;
+    for (int i=0; i<N; i++){
+        int input;
+        cin >> input;
+        if (input-S>0){
+            arr[i] = input-S;
+        } else {
+            arr[i] = S-input;
+        }
+    }
+    int result=arr[0];
+    for (int i=1; i<N; i++){
+        result=gcd(result, arr[i]);
+    }
+    cout << result << "\n";
+}
