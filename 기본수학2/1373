@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+
+int main(){
+    using namespace std;
+    string input;
+    cin >> input;
+    //int result=0;
+    int arr_length;
+
+    int remain = input.size()%3;
+    if (remain==0) arr_length = input.size()/3;
+    else arr_length = input.size()/3+1;
+    int* array = new int[arr_length]();
+
+    for (int i=0; i<remain; i++){
+        if (input[i]=='1'){
+            array[0]+=pow(2,remain-i-1);
+        }
+    }
+    
+    int temp;
+    if (remain==0){
+        temp=0;
+    }
+    else temp =1;
+    for (int i=remain; i<input.size(); i+=3){
+        if (input[i]=='1'){
+            array[temp]+=pow(2,2);
+        }
+        if (input[i+1]=='1'){
+            array[temp]+=pow(2,1);
+        }
+        if (input[i+2]=='1'){
+            array[temp]+=pow(2,0);
+        }
+        temp+=1;
+    }
+    for (int i=0; i<arr_length; i++){
+        cout << array[i];
+    }
+    cout << "\n";
+    delete [] array;
+}
