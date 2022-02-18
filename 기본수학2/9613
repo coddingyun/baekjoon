@@ -1,0 +1,35 @@
+#include <iostream>
+
+int gcd (int a, int b) {
+    if (a % b == 0) {
+        return b;
+    } else {
+        return gcd(b, a % b);
+    }
+}
+
+int arr[101];
+
+int main(){
+    using namespace std;
+    cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    int input;
+    cin >> input;
+    for (int i=0; i<input; i++){
+        int num;
+        cin >> num;
+        for (int j=0; j<num; j++){
+            int temp;
+            cin >> temp;
+            arr[j] = temp;
+        }
+        long long result=0;
+        for (int j=0; j<num; j++){
+            for (int k=j+1; k<num; k++){
+                result += gcd(arr[j], arr[k]);
+            }
+        }
+        cout << result << "\n";
+    }
+}
